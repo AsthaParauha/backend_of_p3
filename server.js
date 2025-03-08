@@ -15,8 +15,9 @@ app.use(express.json());
 const PORT=5000 
 
 // MongoDB connection
+// mongodb+srv://astha:asthadwivedi2006@firstcluster.jq9pp.mongodb.net/?retryWrites=true&w=majority&appName=firstCluster
 
-mongoose.connect("mongodb://localhost:27017/").then(
+mongoose.connect("mongodb+srv://astha:asthadwivedi2006@firstcluster.jq9pp.mongodb.net/?retryWrites=true&w=majority&appName=firstCluster").then(
     ()=>console.log('DB connected...')
 ).catch(
     (err)=>console.log(err)
@@ -52,6 +53,7 @@ app.post('/login', async(req, res)=>{
              return res.status(400).json({ message: "Invalid Credentials" });
             }
           res.json({ message: "Login Successful", username: user.username });
+          console.log("logined sucessfully.")
         }
     catch(err)
     {
